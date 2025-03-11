@@ -18,12 +18,14 @@ public class FlowerArea : MonoBehaviour
         flowerPlants = new List<GameObject>();
         nectarFlowerDictionary = new Dictionary<Collider, Flower>();
         Flowers = new List<Flower>();
+
+        FindChildFlowers(transform);
     }
 
 
     private void Start()
     {
-        FindChildFlowers(transform);
+        
     }
 
 
