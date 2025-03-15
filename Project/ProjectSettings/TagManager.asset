@@ -7,6 +7,10 @@ TagManager:
   - flower_plant
   - nectar
   - boundary
+  - wall
+  - goal
+  - agent
+  - ground
   layers:
   - Default
   - TransparentFX

@@ -9,9 +9,7 @@ namespace Test1
     public class MoveToGoalAgent : Agent
     {
         [SerializeField] private Transform targetTransform;
-        [SerializeField] private Countdown timer;
         [SerializeField] private float moveSpeed = 1f;
-        [SerializeField] private float reward = 1f;
         
         [SerializeField] private Renderer floorRenderer;
         [SerializeField] private Material winMaterial;
@@ -35,15 +33,17 @@ namespace Test1
                 transform.localPosition = initialAgentPos;
                 targetTransform.localPosition = initialGoalPos;
             }
-
-            timer.ResetTimer();
         }
 
 
         public override void CollectObservations(VectorSensor sensor)
         {
-            sensor.AddObservation(transform.localPosition);
-            sensor.AddObservation(targetTransform.localPosition);
+            //sensor.AddObservation(transform.localPosition);
+            //sensor.AddObservation(goalTransform.localPosition);
+
+            sensor.AddObservation((transform.position - targetTransform.position).normalized);  // 3 observations
+
+            // overall = 3
         }
 
 
@@ -52,6 +52,7 @@ namespace Test1
             float moveX = actions.ContinuousActions[0];
             float moveZ = actions.ContinuousActions[1];
 
+            AddReward(-0.0002f);
             transform.localPosition += moveSpeed * Time.deltaTime * new Vector3(moveX, 0, moveZ);
         }
 
@@ -66,25 +67,24 @@ namespace Test1
 
         public void Win()
         {
-            SetReward(reward);
+            AddReward(+1);
             floorRenderer.material = winMaterial;
             EndEpisode();
         }
 
 
-        public void Lose()
+        /*public void Lose()
         {
-            float distance = Vector3.Distance(transform.position, targetTransform.position);
-            SetReward(-reward + (1 / (distance * distance)));
+            float distance = Vector3.Distance(transform.position, goalTransform.position);
+            SetReward(-1 + (1 / (distance * distance)));
             floorRenderer.material = loseMaterial;
             EndEpisode();
-        }
+        }*/
 
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out Goal _)) Win();
-            else if (other.TryGetComponent(out Wall _)) Lose();
         }
     }
 }

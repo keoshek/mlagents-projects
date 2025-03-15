@@ -1,0 +1,47 @@
+{
+    "Crawler": {
+        "checkpoints": [
+            {
+                "steps": 499541,
+                "file_path": "results\\Crawler_01\\Crawler\\Crawler-499541.onnx",
+                "reward": 29.065525179559533,
+                "creation_time": 1742036448.6505532,
+                "auxillary_file_paths": [
+                    "results\\Crawler_01\\Crawler\\Crawler-499541.pt"
+                ]
+            },
+            {
+                "steps": 999417,
+                "file_path": "results\\Crawler_01\\Crawler\\Crawler-999417.onnx",
+                "reward": 266.653968334198,
+                "creation_time": 1742036943.1716766,
+                "auxillary_file_paths": [
+                    "results\\Crawler_01\\Crawler\\Crawler-999417.pt"
+                ]
+            },
+            {
+                "steps": 1073840,
+                "file_path": "results\\Crawler_01\\Crawler\\Crawler-1073840.onnx",
+                "reward": 234.5103728911456,
+                "creation_time": 1742037011.5969372,
+                "auxillary_file_paths": [
+                    "results\\Crawler_01\\Crawler\\Crawler-1073840.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1073840,
+            "file_path": "results\\Crawler_01\\Crawler.onnx",
+            "reward": 234.5103728911456,
+            "creation_time": 1742037011.5969372,
+            "auxillary_file_paths": [
+                "results\\Crawler_01\\Crawler\\Crawler-1073840.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}
