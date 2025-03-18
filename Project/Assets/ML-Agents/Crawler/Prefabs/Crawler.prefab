@@ -2691,7 +2691,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 0eac81efd704b2d4084f922fdfd3f39c, type: 3}
   m_InferenceDevice: 2
   m_BehaviorType: 0
   m_BehaviorName: Crawler
@@ -2716,7 +2716,8 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
-  m_TargetWalkingSpeed: 15
+  m_TargetWalkingSpeed: 20
+  randomizeWalkSpeedEachEpisode: 1
   TargetPrefab: {fileID: 8433066603391096029, guid: f12adb5f3a3b03645b1c505039a34c2f, type: 3}
   body: {fileID: 867818442749165339}
   leg0Upper: {fileID: 3471334174349317854}

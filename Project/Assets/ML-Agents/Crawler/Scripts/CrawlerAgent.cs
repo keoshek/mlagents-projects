@@ -9,7 +9,7 @@ public class CrawlerAgent : Agent
 {
 
     [Header("Walk Speed")]
-    [Range(0.1f, m_maxWalkingSpeed)]
+    [Range(m_minWalkingSpeed, m_maxWalkingSpeed)]
     [SerializeField]
     [Tooltip(
         "The speed the agent will try to match.\n\n" +
@@ -23,13 +23,16 @@ public class CrawlerAgent : Agent
     //The walking speed to try and achieve
     private float m_TargetWalkingSpeed = m_maxWalkingSpeed;
 
-    const float m_maxWalkingSpeed = 15; //The max walking speed
+    [SerializeField] private bool randomizeWalkSpeedEachEpisode;
+
+    const float m_maxWalkingSpeed = 30; //The max walking speed
+    const float m_minWalkingSpeed = 15; //The min walking speed
 
     //The current target walking speed. Clamped because a value of zero will cause NaNs
     public float TargetWalkingSpeed
     {
         get { return m_TargetWalkingSpeed; }
-        set { m_TargetWalkingSpeed = Mathf.Clamp(value, .1f, m_maxWalkingSpeed); }
+        set { m_TargetWalkingSpeed = Mathf.Clamp(value, m_minWalkingSpeed, m_maxWalkingSpeed); }
     }
 
     //The direction an agent will walk during training.
@@ -112,7 +115,7 @@ public class CrawlerAgent : Agent
         UpdateOrientationObjects();
 
         //Set our goal walking speed
-        TargetWalkingSpeed = Random.Range(0.1f, m_maxWalkingSpeed);
+        TargetWalkingSpeed = randomizeWalkSpeedEachEpisode ? Random.Range(m_minWalkingSpeed, m_maxWalkingSpeed) : TargetWalkingSpeed;
     }
 
     /// <summary>
